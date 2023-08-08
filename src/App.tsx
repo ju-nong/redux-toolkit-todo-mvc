@@ -1,8 +1,11 @@
+import { TodoHeader, TodoMain, TodoFooter } from "@components/index";
+
 function App() {
     return (
         <>
-            <h1>어서오고</h1>
-            <h2>어서오고</h2>
+            <TodoHeader />
+            <TodoMain />
+            <TodoFooter />
         </>
     );
 }
