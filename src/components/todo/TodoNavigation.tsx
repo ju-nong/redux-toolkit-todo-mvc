@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "@stores/index";
 import { Filter, setFilter } from "@stores/filter";
+import { clearTodo } from "@stores/todo";
 
 const TodoNavigationStyled = styled.article`
     width: 100%;
@@ -12,6 +13,7 @@ const TodoNavigationStyled = styled.article`
     border-top: 1px solid #e6e6e6;
     position: relative;
     display: flex;
+    align-items: center;
     justify-content: center;
 
     &::before {
@@ -57,6 +59,22 @@ const TodoNavigationStyled = styled.article`
             }
         }
     }
+
+    button {
+        cursor: pointer;
+        background-color: transparent;
+        color: #777;
+        font-size: 100%;
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 2;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
 `;
 
 function TodoNavigation() {
@@ -82,6 +100,11 @@ function TodoNavigation() {
                     </li>
                 ))}
             </ul>
+            {todo.filter((item) => item.completed).length ? (
+                <button onClick={() => dispatch(clearTodo())}>
+                    Clear completed
+                </button>
+            ) : null}
         </TodoNavigationStyled>
     );
 }
