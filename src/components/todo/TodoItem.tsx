@@ -1,7 +1,7 @@
 import React, { useMemo } from "react";
 import styled from "@emotion/styled";
 import { useDispatch } from "react-redux";
-import { Todo, toggleCompleted } from "@stores/todo";
+import { Todo, toggleCompleted, destoryTodo } from "@stores/todo";
 
 interface TodoItemProps {
     todo: Todo;
@@ -100,7 +100,11 @@ function TodoItem({ todo }: TodoItemProps) {
                 {todo.text}
             </TodoContentStyled>
             {/* <TodoInputStyled type="text" value={todo.text} /> */}
-            <TodoDestroyButtonStyled>×</TodoDestroyButtonStyled>
+            <TodoDestroyButtonStyled
+                onClick={() => dispatch(destoryTodo(todo.id))}
+            >
+                ×
+            </TodoDestroyButtonStyled>
         </TodoItemStyled>
     );
 }

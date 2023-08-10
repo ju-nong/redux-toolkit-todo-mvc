@@ -22,11 +22,13 @@ const todoSlice = createSlice({
                     ? { ...todo, completed: !todo.completed }
                     : todo,
             ),
+        destoryTodo: (state, action) =>
+            state.filter(({ id }) => id !== action.payload),
     },
 });
 
 export { todoSlice };
-export const { addTodo, toggleCompleted } = todoSlice.actions;
+export const { addTodo, toggleCompleted, destoryTodo } = todoSlice.actions;
 export default todoSlice.reducer;
 
 export type { Todo };
