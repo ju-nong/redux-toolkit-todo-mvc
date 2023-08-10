@@ -2,13 +2,15 @@ import { createSlice } from "@reduxjs/toolkit";
 
 type Filter = "all" | "active" | "completed";
 
-const initialState: Filter = "all";
+const initialState = {
+    value: "all" as Filter,
+};
 
 const filterSlice = createSlice({
     name: "filter",
     initialState,
     reducers: {
-        setFilter: (state, action) => (state = action.payload),
+        setFilter: (state, action) => ({ ...state, value: action.payload }),
     },
 });
 

@@ -13,7 +13,7 @@ const TodoListStyled = styled.ul`
 
 function TodoList() {
     const todo = useSelector((state: RootState) => state.todo);
-    const filter = useSelector((state: RootState) => state.filter);
+    const { value: filter } = useSelector((state: RootState) => state.filter);
 
     const filteringTodo = useMemo(
         () =>

@@ -92,7 +92,7 @@ function TodoNavigation() {
                 {filterList.map((item) => (
                     <li
                         key={item}
-                        className={item === filter ? "active" : ""}
+                        className={item === filter.value ? "active" : ""}
                         onClick={() => dispatch(setFilter(item))}
                     >
                         {item}
