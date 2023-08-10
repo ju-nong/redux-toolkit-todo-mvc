@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { TodoForm, TodoContainer } from "@components/todo";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { RootState } from "@stores/index";
 
 const TodoMainStyled = styled.main`

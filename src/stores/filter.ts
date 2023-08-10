@@ -9,8 +9,6 @@ const filterSlice = createSlice({
     initialState,
     reducers: {
         setFilter: (state, action) => (state = action.payload),
-        // addTodo: (state, action) =>
-        //     state.concat({ text: action.payload, checked: false }),
     },
 });
 

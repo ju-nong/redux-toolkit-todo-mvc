@@ -1,9 +1,8 @@
-import React, { useMemo } from "react";
+import { useMemo } from "react";
 import styled from "@emotion/styled";
 import { TodoItem } from "@components/todo";
 import { useSelector } from "react-redux";
 import { RootState } from "@stores/index";
-import { Todo } from "@stores/todo";
 
 const TodoListStyled = styled.ul`
     display: flex;
