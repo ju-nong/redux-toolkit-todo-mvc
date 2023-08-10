@@ -52,9 +52,14 @@ function TodoForm() {
     function handleKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
         if (event.key === "Enter") {
             const target = event.target as HTMLInputElement;
+            let { value } = target;
 
-            dispatch(addTodo(target.value));
-            target.value = "";
+            value = value.trim();
+
+            if (value.length) {
+                dispatch(addTodo(value));
+                target.value = "";
+            }
         }
     }
 
