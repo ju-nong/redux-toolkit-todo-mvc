@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useRef } from "react";
+import React, { useState, useMemo, useRef, useEffect } from "react";
 import styled from "@emotion/styled";
 import { useDispatch } from "react-redux";
 import { Todo, toggleCompleted, changeTodo, destoryTodo } from "@stores/todo";
@@ -96,6 +96,12 @@ function TodoItem({ todo }: TodoItemProps) {
 
     const [isEdit, setIsEdit] = useState(false);
     const $input = useRef<HTMLInputElement>(null);
+
+    useEffect(() => {
+        if (isEdit) {
+            $input.current?.focus();
+        }
+    }, [isEdit]);
 
     function handleEditStop() {
         setIsEdit(false);
