@@ -29,7 +29,7 @@ function TodoList() {
     return (
         <TodoListStyled>
             {filteringTodo.map((item) => (
-                <TodoItem todo={item} />
+                <TodoItem key={item.id} todo={item} />
             ))}
         </TodoListStyled>
     );

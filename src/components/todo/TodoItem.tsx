@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useMemo } from "react";
 import styled from "@emotion/styled";
-import { Todo } from "@stores/todo";
+import { useDispatch } from "react-redux";
+import { Todo, toggleCompleted } from "@stores/todo";
 
 interface TodoItemProps {
     todo: Todo;
@@ -17,16 +18,23 @@ const TodoItemStyled = styled.li`
     &:last-child {
         border-bottom: none;
     }
+
+    &:hover {
+        > button:last-child {
+            visibility: visible;
+        }
+    }
 `;
 
 const TodoCheckButtonStyled = styled.button`
     width: 40px;
     height: 40px;
-    border-radius: 100%;
     background-color: transparent;
+    border-radius: 100%;
     border: 2px solid #ededed;
     margin: 15px 0px;
     line-height: 40px;
+    font-size: 22px;
 
     &.completed {
         border-color: rgb(210, 230, 227);
@@ -67,6 +75,7 @@ const TodoDestroyButtonStyled = styled.button`
     background-color: transparent;
     transition: color 0.2s ease-out;
     transform: translateY(-50%);
+    visibility: hidden;
 
     &:hover {
         color: #af5b5e;
@@ -74,10 +83,22 @@ const TodoDestroyButtonStyled = styled.button`
 `;
 
 function TodoItem({ todo }: TodoItemProps) {
+    const dispatch = useDispatch();
+
+    const isCompleted = useMemo(
+        () => (todo.completed ? "completed" : ""),
+        [todo],
+    );
+
     return (
         <TodoItemStyled>
-            <TodoCheckButtonStyled />
-            <TodoContentStyled>{todo.text}</TodoContentStyled>
+            <TodoCheckButtonStyled
+                className={isCompleted}
+                onClick={() => dispatch(toggleCompleted(todo.id))}
+            />
+            <TodoContentStyled className={isCompleted}>
+                {todo.text}
+            </TodoContentStyled>
             {/* <TodoInputStyled type="text" value={todo.text} /> */}
             <TodoDestroyButtonStyled>×</TodoDestroyButtonStyled>
         </TodoItemStyled>
