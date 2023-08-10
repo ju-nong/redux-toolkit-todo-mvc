@@ -9,6 +9,10 @@ const TodoFooterStyled = styled.footer`
     > p {
         color: #bfbfbf;
     }
+
+    a {
+        color: inherit;
+    }
 `;
 
 function TodoFooter() {
@@ -16,7 +20,12 @@ function TodoFooter() {
         <TodoFooterStyled>
             <p>더블클릭해서 할 일을 수정하세요.</p>
             <p>만든이 이준용</p>
-            <p>사실여기클론코딩함</p>
+            <p>
+                Copyright{" "}
+                <a href="https://todomvc.com/examples/react/#/" target="_blank">
+                    TodoMVC
+                </a>
+            </p>
         </TodoFooterStyled>
     );
 }
