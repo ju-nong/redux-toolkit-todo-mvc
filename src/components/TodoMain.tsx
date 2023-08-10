@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { TodoForm } from "@components/todo";
+import { TodoForm, TodoContainer } from "@components/todo";
 
 const TodoMainStyled = styled.main`
     max-width: 550px;
@@ -14,6 +14,7 @@ function TodoMain() {
     return (
         <TodoMainStyled>
             <TodoForm />
+            <TodoContainer />
         </TodoMainStyled>
     );
 }
