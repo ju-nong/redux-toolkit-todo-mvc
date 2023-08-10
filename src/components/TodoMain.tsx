@@ -1,5 +1,7 @@
 import styled from "@emotion/styled";
 import { TodoForm, TodoContainer } from "@components/todo";
+import { useSelector, useDispatch } from "react-redux";
+import { RootState } from "@stores/index";
 
 const TodoMainStyled = styled.main`
     max-width: 550px;
@@ -11,10 +13,12 @@ const TodoMainStyled = styled.main`
 `;
 
 function TodoMain() {
+    const todo = useSelector((state: RootState) => state.todo);
+
     return (
         <TodoMainStyled>
             <TodoForm />
-            <TodoContainer />
+            {todo.length ? <TodoContainer /> : null}
         </TodoMainStyled>
     );
 }

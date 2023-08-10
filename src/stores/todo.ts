@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 type Todo = {
     text: String;
-    checked: Boolean;
+    completed: Boolean;
 };
 type Todos = Todo[];
 const initialState: Todos = [];
@@ -12,10 +12,12 @@ const todoSlice = createSlice({
     initialState,
     reducers: {
         addTodo: (state, action) =>
-            state.concat({ text: action.payload, checked: false }),
+            state.concat({ text: action.payload, completed: false }),
     },
 });
 
 export { todoSlice };
 export const { addTodo } = todoSlice.actions;
 export default todoSlice.reducer;
+
+export type { Todo };

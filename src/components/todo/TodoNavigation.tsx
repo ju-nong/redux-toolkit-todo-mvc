@@ -68,7 +68,9 @@ function TodoNavigation() {
 
     return (
         <TodoNavigationStyled>
-            <span>{todo.filter((item) => !item.checked).length} item left</span>
+            <span>
+                {todo.filter((item) => !item.completed).length} item left
+            </span>
             <ul>
                 {filterList.map((item) => (
                     <li

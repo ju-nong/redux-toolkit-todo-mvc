@@ -10,6 +10,7 @@ const TodoFormStyled = styled.div`
     row-gap: 15px;
     height: 65px;
     padding: 16px 16px 16px 0px;
+    box-shadow: inset 0 -2px 1px rgba(0, 0, 0, 0.03);
 `;
 
 const AllCheckButtonStyled = styled.button`
