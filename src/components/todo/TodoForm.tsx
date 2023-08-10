@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useMemo } from "react";
 import styled from "@emotion/styled";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "@stores/index";
-import { addTodo } from "@stores/todo";
+import { addTodo, allCompletedTodo } from "@stores/todo";
 
 const TodoFormStyled = styled.div`
     display: flex;
@@ -49,6 +49,11 @@ function TodoForm() {
     const todo = useSelector((state: RootState) => state.todo);
     const dispatch = useDispatch();
 
+    const isAllCompleted = useMemo(
+        () => todo.every((item) => item.completed),
+        [todo],
+    );
+
     function handleKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
         if (event.key === "Enter") {
             const target = event.target as HTMLInputElement;
@@ -65,7 +70,12 @@ function TodoForm() {
 
     return (
         <TodoFormStyled>
-            <AllCheckButtonStyled className={todo.length ? "show" : ""}>
+            <AllCheckButtonStyled
+                className={`${todo.length ? "show" : ""} ${
+                    isAllCompleted ? "active" : ""
+                }`}
+                onClick={() => dispatch(allCompletedTodo(isAllCompleted))}
+            >
                 ❯
             </AllCheckButtonStyled>
             <TodoInputStyled

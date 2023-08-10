@@ -31,12 +31,20 @@ const todoSlice = createSlice({
         destoryTodo: (state, action) =>
             state.filter(({ id }) => id !== action.payload),
         clearTodo: (state) => state.filter(({ completed }) => !completed),
+        allCompletedTodo: (state, action) =>
+            state.map((todo) => ({ ...todo, completed: !action.payload })),
     },
 });
 
 export { todoSlice };
-export const { addTodo, toggleCompleted, changeTodo, destoryTodo, clearTodo } =
-    todoSlice.actions;
+export const {
+    addTodo,
+    toggleCompleted,
+    changeTodo,
+    destoryTodo,
+    clearTodo,
+    allCompletedTodo,
+} = todoSlice.actions;
 export default todoSlice.reducer;
 
 export type { Todo };
