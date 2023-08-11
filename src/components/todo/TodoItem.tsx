@@ -103,11 +103,7 @@ function TodoItem({ todo }: TodoItemProps) {
         }
     }, [isEdit]);
 
-    function handleEditStop() {
-        setIsEdit(false);
-    }
-
-    useOutside($input, handleEditStop);
+    useOutside($input, () => setIsEdit(false));
 
     const isCompleted = useMemo(
         () => (isEdit ? "hidden" : todo.completed ? "completed" : ""),
