@@ -111,9 +111,12 @@ function TodoItem({ todo }: TodoItemProps) {
     );
 
     function handleChangeTodo(event: React.KeyboardEvent<HTMLInputElement>) {
-        const target = event.target as HTMLInputElement;
+        let { value: text } = event.target as HTMLInputElement;
+        text = text.trim();
 
-        dispatch(changeTodo({ id: todo.id, text: target.value }));
+        if (text.length) {
+            dispatch(changeTodo({ id: todo.id, text }));
+        }
     }
 
     return (
